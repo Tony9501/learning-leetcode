@@ -1,0 +1,51 @@
+Leetcode 167 Two Sum II - Input array is sorted
+
+Given an array of integers that is already sorted in ascending order, find two numbers such that they
+
+add up to a specific target number.
+
+The function twoSum should return indices of the two numbers such that they add up to the target,
+
+where index1 must be less than index2.
+
+Please note that your returned answers (both index1 and index2) are not zero-based.(不是从零开始)
+
+You may assume that each input would have exactly one solution.
+
+Input: numbers={2, 7, 11, 15}, target=9
+Output: index1=1, index2=2
+
+ 
+典型的双指针问题。
+
+初始化左指针left指向数组起始，初始化右指针right指向数组结尾。
+
+根据已排序这个特性，
+
+（1）如果numbers[left]与numbers[right]的和tmp小于target，说明应该增加tmp,因此left右移指向一个较大的值。
+
+（2）如果tmp大于target，说明应该减小tmp,因此right左移指向一个较小的值。
+
+（3）tmp等于target，则找到，返回left+1和right+1。（注意以1为起始下标）
+
+时间复杂度O(n): 扫一遍
+
+空间复杂度O(1)
+
+public int[] twoSum(int[] num, int target) {        //创建数组， 创建目标
+    int[] indice = new int[2];                      //创建数组 内容为两个数                        
+    if (num == null || num.length < 2) return indice;       // 数组为空或者数组的长度少于2的时候  返回
+    int left = 0, right = num.length - 1;            //创建指针  左指针指向第一个数 右指针指向末尾
+    while (left < right) {                           //while true，执行
+        int v = num[left] + num[right];              
+        if (v == target) {
+            indice[0] = left + 1;                     //若找到 则返回序列  （因为是1为起始下标）得出结论
+            indice[1] = right + 1;
+            break;
+        } else if (v > target) {
+            right --;                                //若大于目标 则右指针左移
+        } else {
+            left ++;                                  //若小于目标 则左指针右移
+        }
+    }
+    return indice;
