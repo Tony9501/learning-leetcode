@@ -1,0 +1,6 @@
+^是异或运算的意思  异或指 若a^b  即把两个数先转换成成二进制（都是0和1） 然后进行比对 若位置的数值相同则输出0 不同则输出1
+
+Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
+
+For example,
+Given nums = [0, 1, 3] return 2.
