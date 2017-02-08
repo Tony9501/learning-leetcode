@@ -1,0 +1,14 @@
+Given an array of integers, find if the array contains any duplicates. 
+Your function should return true if any value appears at least twice in the array,  (每个元素至少有两次为true）
+and it should return false if every element is distinct. （所有元素都是独特的为false）  【那有的2次有的1次呢= 。 =！ 】
+
+   public boolean containsDuplicate(int[] nums) {
+
+        Arrays.sort(nums);                               //java自带排序功能，这是升序排序
+        for(int ind = 1; ind < nums.length; ind++) {
+            if(nums[ind] == nums[ind - 1]) {             //排列好的数组 后一个和前一个 进行判断就可以啦
+                return true;
+            }
+        }
+        return false;
+    }
