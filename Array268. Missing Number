@@ -4,3 +4,22 @@ Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find th
 
 For example,
 Given nums = [0, 1, 3] return 2.
+
+
+
+
+
+3.Binary Search                     //二分查找
+public int missingNumber(int[] nums) { //binary search
+    Arrays.sort(nums);
+    int left = 0, right = nums.length, mid= (left + right)/2;
+    while(left<right){
+        mid = (left + right)/2;
+        if(nums[mid]>mid) right = mid;
+        else left = mid+1;                                   //编程思路我明白。。但是如果初雪mid= 0+(3/2)=1.5这种情况怎么处理。。
+                                                                                          返回1和返回2的结果会导致left的值不一样
+    }
+    return left;
+}
+
+自己的方法  用for循环检测nums(i+1)-nums(i)!=1   返回int = i+1
