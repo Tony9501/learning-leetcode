@@ -1,0 +1,21 @@
+Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+
+You may assume that the array is non-empty and the majority element always exist in the array.
+(注意审题，n出现次数必须大于n/2次）
+
+public class Solution {
+    public int majorityElement(int[] num) {
+
+        int major=num[0], count = 1;                    //令major为第一个数  次数为1
+        for(int i=1; i<num.length;i++){
+            if(count==0){                              //当count为0时， 赋值下一个数为major 同时count+1     
+                count++;
+                major=num[i];
+            }else if(major==num[i]){              //若major和该位置的数相同，则count+1                   
+                count++;
+            }else count--;                         //若count不为0且maJor与i位置的数不等，则count-1
+            
+        }
+        return major;                            //返回major就可以  count= count>(n/2)
+    }
+}
